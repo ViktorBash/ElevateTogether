@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-  <h2>Homepage</h2>
-  <p>Welcome to My Site, {% if user.is_authenticated %}{{ user.username }}{% else %}visitor{% endif %}!</p>
-  <p>
-    <strong>Total users registered: </strong> {{ count }}
-  </p>
+
+{% if user.is_authenticated == False %}
+<h1>Landing Page With Button To Login/register </h1>
+{% endif %}
+
+{% if user.is_authenticated and user.profile not in profiles %}
+<h1>You're authenticated, but you need to fill out this form: </h1>
+<form method="POST">
+{% csrf_token %}
+{{ form|crispy }}
+
+<div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Sign Up</button>
+      </div>
+</form>
+
+{% endif %}
+
+{% if user.is_authenticated and user.profile in profiles %}
+<h1>You're authenticated and have filled out the form. Here are the users: </h1>
+{% endif %}
+
+
 {% endblock %}

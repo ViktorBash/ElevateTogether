@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     knows_math = models.BooleanField(default=False, null=False)
     knows_singing = models.BooleanField(default=False, null=False)
     knows_music = models.BooleanField(default=False, null=False)
@@ -18,3 +18,4 @@ class Profile(models.Model):
     learn_drawing = models.BooleanField(default=False, null=False)
     learn_video_editing = models.BooleanField(default=False, null=False)
     learn_animation = models.BooleanField(default=False, null=False)
+    description = models.TextField(default="I love to learn and teach!", null=False)
