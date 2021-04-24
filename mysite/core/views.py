@@ -8,6 +8,7 @@ from .models import Profile
 from .forms import ProfileCreateForm, ProfileEditForm
 
 
+# Homepage with landing page, form to create a profile, and place to view everybody
 def home(request):
     if request.method == "POST":
         profile_form = ProfileCreateForm(request.POST, instance=request.user)
@@ -40,6 +41,7 @@ def home(request):
         })
 
 
+# Create an account (User model)
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -53,39 +55,17 @@ def signup(request):
     })
 
 
-@login_required
-def secret_page(request):
-    return render(request, 'secret_page.html')
-
-
-class SecretPage(LoginRequiredMixin, TemplateView):
-    template_name = 'secret_page.html'
-
-
-# Actual Views:
-@login_required
-def users_wanting_learn(request):
-    return render(request, "wanting_to_learn.html")
-
-
-@login_required
-def users_wanting_to_teach(request):
-    return render(request, "wanting_to_teach.html")
-
-
-@login_required
-def fill_out_skills_form(request):
-    return render(request, "skills_form.html")
-
+# See the profile of someone (uses UUID to create a custom URL)
 @login_required
 def profile_view(request, user_uuid):
     profile = Profile.objects.get(link=user_uuid)
     user = profile.user
     return render(request, "profile.html", context={
         "profile": profile,
-        "profile_user": user,
     })
 
+
+# Update your own profile (similar mechanics to the create profile form/view)
 @login_required
 def profile_update(request):
     if request.method == "POST":
