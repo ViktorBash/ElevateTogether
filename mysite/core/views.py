@@ -33,3 +33,20 @@ def secret_page(request):
 
 class SecretPage(LoginRequiredMixin, TemplateView):
     template_name = 'secret_page.html'
+
+
+# Actual Views:
+@login_required
+def users_wanting_learn(request):
+    return render(request, "wanting_to_learn.html")
+
+
+@login_required
+def users_wanting_to_teach(request):
+    return render(request, "wanting_to_teach.html")
+
+
+@login_required
+def fill_out_skills_form(request):
+    return render(request, "skills_form.html")
+
