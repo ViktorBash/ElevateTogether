@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Profile
-from .forms import ProfileCreateForm
+from .forms import ProfileCreateForm, ProfileEditForm
 
 
 def home(request):
@@ -77,6 +77,7 @@ def users_wanting_to_teach(request):
 def fill_out_skills_form(request):
     return render(request, "skills_form.html")
 
+@login_required
 def profile_view(request, user_uuid):
     profile = Profile.objects.get(link=user_uuid)
     user = profile.user
@@ -84,3 +85,34 @@ def profile_view(request, user_uuid):
         "profile": profile,
         "profile_user": user,
     })
+
+@login_required
+def profile_update(request):
+    if request.method == "POST":
+        profile_form = ProfileEditForm(request.POST, instance=request.user)
+        if profile_form.is_valid():
+            user_profile = Profile.objects.get(user=request.user)
+            user_profile.knows_math = profile_form.cleaned_data.get("knows_math")
+            user_profile.knows_singing = profile_form.cleaned_data.get("knows_singing")
+            user_profile.knows_music = profile_form.cleaned_data.get("knows_music")
+            user_profile.knows_drawing = profile_form.cleaned_data.get("knows_drawing")
+            user_profile.knows_video_editing = profile_form.cleaned_data.get("knows_video_editing")
+            user_profile.knows_animation = profile_form.cleaned_data.get("knows_animation")
+            user_profile.learn_math = profile_form.cleaned_data.get("learn_math")
+            user_profile.learn_singing = profile_form.cleaned_data.get("learn_singing")
+            user_profile.learn_music = profile_form.cleaned_data.get("learn_music")
+            user_profile.learn_drawing = profile_form.cleaned_data.get("learn_drawing")
+            user_profile.learn_video_editing = profile_form.cleaned_data.get("learn_video_editing")
+            user_profile.learn_animation = profile_form.cleaned_data.get("learn_animation")
+            user_profile.description = profile_form.cleaned_data.get("description")
+            user_profile.save()
+        else:
+            print("error")
+        user_profile = Profile.objects.get(user=request.user)
+        return redirect("home")
+        
+    else:
+        form = ProfileEditForm()
+        return render(request, "profile_update.html", context={
+            "form": form,
+        })

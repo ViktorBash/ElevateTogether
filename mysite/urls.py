@@ -15,4 +15,5 @@ urlpatterns = [
     path('wanting_to_teach/', views.users_wanting_to_teach, name="wanting_to_teach"),
     path('skills_form/', views.fill_out_skills_form, name="skills_form"),
     path("profile/<uuid:user_uuid>/", views.profile_view, name="profile_view"),
+    path("profile_update/", views.profile_update, name="profile_update"),
 ]
