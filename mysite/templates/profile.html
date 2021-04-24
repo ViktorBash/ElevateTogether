@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
 <h1>This Person's Profile</h1>
 <h1>{{ profile.link }}</h1>
 <h1>{{ profile.user }}</h1>
-<h1>{{ profile_user }}</h1>
+
+{% if user == profile.user %}
+<button><a href="{% url "profile_update" %}">Edit Profile</a></button>
+{% endif %}
 {% endblock %}
