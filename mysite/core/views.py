@@ -77,3 +77,10 @@ def users_wanting_to_teach(request):
 def fill_out_skills_form(request):
     return render(request, "skills_form.html")
 
+def profile_view(request, user_uuid):
+    profile = Profile.objects.get(link=user_uuid)
+    user = profile.user
+    return render(request, "profile.html", context={
+        "profile": profile,
+        "profile_user": user,
+    })
