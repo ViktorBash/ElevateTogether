@@ -19,4 +19,3 @@ class Profile(models.Model):
     learn_animation = models.BooleanField(default=False, null=False)
     description = models.TextField(default="I love to learn and teach!", null=False)
     link = models.UUIDField(default=uuid.uuid4, unique=True, null=False)  # To create a URL to view a person's profile
-

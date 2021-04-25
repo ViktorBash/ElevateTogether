@@ -11,4 +11,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("profile/<uuid:user_uuid>/", views.profile_view, name="profile_view"),
     path("profile_update/", views.profile_update, name="profile_update"),
+    path('', include('chat.urls'))
 ]
