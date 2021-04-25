@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Chatroom</h1>
+<div class="container text-center">
+    <h1 class="p-3 text-primary">Chat w/ Mahak</h1>
 
- <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
+ <textarea id="chat-log" cols="100" rows="18"></textarea><br>
+    <input id="chat-message-input" type="text" placeholder="Enter you Message Here:" class="m-3" size="100"><br>
+
+    <input id="chat-message-submit" class="button-custom btn shadow p-3 pl-4 pr-4 rounded align-center my-auto text-dark m-3" type="button" value="Send">
     {% comment %} {{ room_name|json_script:"room-name" }} {% endcomment %}
+    <br><br>
+</div>
     <script>
         {% comment %} const roomName = JSON.parse(document.getElementById('room-name').textContent); {% endcomment %}
         const roomName = "{{link}}"
