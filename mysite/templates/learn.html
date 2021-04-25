@@ -34,14 +34,12 @@
   <div class="col-3 shadow p-3 mb-5 rounded bg-light mx-auto mt-4 ">
     <p class=" h3 text-center mt-3">Filters</p>
 
-    <form class="m-3 mt-5">
-      <div class="form-group">
-        <input type="number" class="form-control shadow p-3 rounded bg-light" id="grade" aria-describedby="emailHelp" placeholder="Grade:">
+    <form class="m-3 mt-5 ">
+      <div class="row ">
+        <a href="#" type="button" class=" col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Learn</a>
+        <a href="#" type="button" class="col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Teach</a>
       </div>
-      <div class="form-group">
-        <input type="number" class="form-control shadow p-3 rounded bg-light" id="age" aria-describedby="emailHelp" placeholder="Age:">
-      </div>
-      <div class="form-check p-3">
+      <div class="form-check p-3 mt-3">
         <input type="checkbox" class="form-check-input" id="math">
         <label class="form-check-label" for="math">Math</label>
       </div>
@@ -68,17 +66,13 @@
     </form>
   </div>
   <div class="col-5 mt-4">
-    <div class="row ">
-      <a href="#" type="button" class=" col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Learn</a>
-      <a href="#" type="button" class="col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Teach</a>
-  </div>
   {% for profile in profiles %}
-  <div class=" shadow p-3 pb-1 rounded lightblue-custom mx-auto mt-4"> 
+  <div class=" shadow p-4 pb-1 rounded lightblue-custom mx-auto mt-4"> 
     <div class="row">
-      <div class="col">
+      <div class="col-4">
         <img src="{% static 'placeholder.jpeg' %}" style="width:110px;" alt="profile" >
       </div>
-      <div class="col profile-card">
+      <div class="col-6 profile-card">
         <p class="message">{{ profile.user.username }}</p>
         <p class="date">Learn:
         {% if profile.learn_math is True %} 
