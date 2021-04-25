@@ -34,7 +34,7 @@ def learn(request):
         else:
             print("error")
         profiles = Profile.objects.all()
-        return redirect("teach")
+        return redirect("learn")
     else:
         profiles = Profile.objects.all()
         form = ProfileCreateForm()
@@ -50,7 +50,7 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('learn')
+            return redirect('login')
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {
