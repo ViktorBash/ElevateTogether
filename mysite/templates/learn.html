@@ -133,6 +133,27 @@
     <p class="date">May 4</p>
   </div>
 </div>
-
 {% endif %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+
+    $('input[type="checkbox"]').click(function(){
+            if($(this).prop("checked") == true){
+              console.log(this.id)
+            }
+            else if($(this).prop("checked") == false){
+              console.log("nothing")
+            }
+        });
+    {% for profile in profiles %}
+      console.log("test")
+    {% endfor %}
+    
+    $("p").click(function(){
+    alert("The paragraph was clicked.");
+});
+
+});
+</script>
 {% endblock %}
