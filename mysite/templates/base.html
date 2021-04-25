@@ -54,14 +54,13 @@
 
         {% if user.is_authenticated %}
           <ul class="navbar-nav">
-            <a href="{% url 'profile_view' %}" type="button" class=" button-custom btn shadow p-3 mb-5 rounded align-center my-auto ">{{ user.username }}</a>
+            <a href="#" type="button" class=" button-custom btn shadow p-3 pl-4 pr-4 rounded align-center my-auto text-dark">{{ user.username }}</a>
           </ul>
         {% else %}
           <form class="form-inline my-2 my-lg-0">
-            <a href="{% url 'signup' %}" type="button" class=" button-custom btn shadow p-3 mb-5 rounded align-center my-auto m2">Sign Up</a>
-            <a href="{% url 'login' %}" type="button" class=" button-custom btn shadow p-3 mb-5 rounded align-center my-auto m2">Log In</a>
+            <a href="{% url 'signup' %}" type="button" class=" button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Sign Up</a>
+            <a href="{% url 'login' %}" type="button" class=" button-custom btn shadow p-3 pl-4 pr-4 rounded align-center my-auto m2 text-dark ">Log In</a>
           </form>
-          <h1>hi</h1>
         {% endif %}
     </div>
   </nav>
