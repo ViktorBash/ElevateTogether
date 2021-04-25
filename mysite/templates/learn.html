@@ -141,14 +141,66 @@
     $('input[type="checkbox"]').click(function(){
             if($(this).prop("checked") == true){
               console.log(this.id)
+              {% for profile in profiles %}
+              <div class=" shadow p-4 pb-1 rounded lightblue-custom mx-auto mt-4"> 
+                <div class="row">
+                  <div class="col-4">
+                    <img src="{% static 'placeholder.jpeg' %}" style="width:110px;" alt="profile" >
+                  </div>
+                  <div class="col-6 profile-card">
+                    <p class="message">{{ profile.user.username }}</p>
+                    <p class="date">Learn:
+                    {% if profile.learn_math is True and profile.learn_math == %} 
+                    Math 
+                    {% endif %}
+                    {% if profile.learn_singing is True %} 
+                    Singing 
+                    {% endif %}
+                    {% if profile.learn_music is True %} 
+                    Music 
+                    {% endif %}
+                    {% if profile.learn_drawing is True %} 
+                    Drawing 
+                    {% endif %}
+                    {% if profile.learn_video_editing is True %} 
+                    Video Editing  
+                    {% endif %}
+                    {% if profile.learn_animation is True %} 
+                    Animation 
+                    {% endif %}
+                    </p>
+                    <p class="date">Teach: 
+                    {% if profile.knows_math is True %} 
+                    Math 
+                    {% endif %}
+                    {% if profile.knows_singing is True %} 
+                    Singing 
+                    {% endif %}
+                    {% if profile.knows_music is True %} 
+                    Music 
+                    {% endif %}
+                    {% if profile.knows_drawing is True %} 
+                    Drawing 
+                    {% endif %}
+                    {% if profile.knows_video_editing is True %} 
+                    Video Editing  
+                    {% endif %}
+                    {% if profile.knows_animation is True %} 
+                    Animation 
+                    {% endif %}
+                    </p>
+                  </div>
+                </div>
+                <p class="date">{{profile.description}}</p>
+                <a href="{% url 'create_chat_by_student' user_uuid=profile.link %}" class="message text-primary h3">Contact {{ profile.user.username }}</a>
+              </div>
+              {% endfor %}
             }
             else if($(this).prop("checked") == false){
               console.log("nothing")
             }
         });
-    {% for profile in profiles %}
-      console.log("test")
-    {% endfor %}
+
     
     $("p").click(function(){
     alert("The paragraph was clicked.");
