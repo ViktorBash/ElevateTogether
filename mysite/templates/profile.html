@@ -3,11 +3,16 @@
 {% load static from static %}
 
 {% block content %}
-<h1>This Person's Profile</h1>
-<h1>{{ profile.link }}</h1>
-<h1>{{ profile.user }}</h1>
 
 {% if user == profile.user %}
-<button><a href="{% url 'profile_update' %}">Edit Profile</a></button>
+<div class="container">
+    <h1 class="text-center p-3 text-primary">{{ profile.user }}'s Profile Page</h1>
+    <img class="mx-auto " src="{% static 'placeholder.jpeg' %}" alt="profile-pic" >
+    <div class="col mt-4">
+        <div class="row ">
+          <a href="{% url 'profile_update' %}" type="button" class=" col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Edit Profile</a>
+          <a href="{% url 'logout' %}" type="button" class="col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Log Out</a>
+      </div>
+</div>
 {% endif %}
 {% endblock %}
