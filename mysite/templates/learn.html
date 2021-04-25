@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% if user.is_authenticated == False %}
+<h1>Landing Page With Button To Login/register </h1>
+{% endif %}
+
+{% if user.is_authenticated and user.profile not in profiles %}
+<h1>You're authenticated, but you need to fill out this form: </h1>
+<form method="POST">
+{% csrf_token %}
+{{ form|crispy }}
+
+<div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Sign Up</button>
+      </div>
+</form>
+
+{% endif %}
+
+{% if user.is_authenticated and user.profile in profiles %}
+<div class="row">
+  <div class="col-3 shadow p-3 mb-5 rounded bg-light mx-auto mt-4 ">
+    <p class=" h3 text-center mt-3">Filters</p>
+
+    <form class="m-3 mt-5">
+      <div class="form-group">
+        <input type="number" class="form-control shadow p-3 rounded bg-light" id="grade" aria-describedby="emailHelp" placeholder="Grade:">
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control shadow p-3 rounded bg-light" id="age" aria-describedby="emailHelp" placeholder="Age:">
+      </div>
+      <div class="form-check p-3">
+        <input type="checkbox" class="form-check-input" id="math">
+        <label class="form-check-label" for="math">Math</label>
+      </div>
+      <div class="form-check p-3">
+        <input type="checkbox" class="form-check-input" id="music">
+        <label class="form-check-label" for="music">Music</label>
+      </div>
+      <div class="form-check p-3">
+        <input type="checkbox" class="form-check-input" id="singing">
+        <label class="form-check-label" for="singing">Singing</label>
+      </div>
+      <div class="form-check p-3">
+        <input type="checkbox" class="form-check-input" id="drawing">
+        <label class="form-check-label" for="drawing">Drawing</label>
+      </div>
+      <div class="form-check p-3">
+        <input type="checkbox" class="form-check-input" id="animation">
+        <label class="form-check-label" for="animation">Animation</label>
+      </div>
+      <div class="form-check p-3">
+        <input type="checkbox" class="form-check-input" id="video-editing">
+        <label class="form-check-label" for="video-editing">Video Editing</label>
+      </div>
+    </form>
+  </div>
+  <div class="col-5 mt-4">
+    <div class="row ">
+      <a href="{% url 'signup' %}" type="button" class=" col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Learn</a>
+      <a href="{% url 'signup' %}" type="button" class="col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Teach</a>
+  </div>
+  <div class=" shadow p-3 pb-1 rounded lightblue-custom mx-auto mt-4"> 
+    <div class="row">
+      <div class="col">
+        <img src="placeholder.jpeg" alt="profile" >
+      </div>
+      <div class="col">
+        <p class="message">Dan Lowman</p>
+        <p class="date">Learn: Programming Language, Spanish</p>
+        <p class="date">Teach: Painting, Piano, Math up to Calc</p>
+      </div>
+    </div>
+    <p class="date">Hi, I am a junior in highschool! I am looking for someone to help me learn to play some instruments and am specialized in web programming. DM me if you would like to help eachother and meet up! </p>
+    <a href="{% url 'create_chat_by_student' %}" class="message text-primary h3">Contact Dan</a>
+  </div>
+  <div class=" shadow p-3 pb-1 rounded lightblue-custom mx-auto mt-4"> 
+    <div class="row">
+      <div class="col">
+        <img src="placeholder.jpeg" alt="profile" >
+      </div>
+      <div class="col">
+        <p class="message">Lily Ross</p>
+        <p class="date">Activities: Learn: Piano, Flute </p>
+        <p class="date">Teach: Javascript, Python, HTML, CSS</p>
+      </div>
+    </div>
+    <p class="date">Hi, I am a junior in highschool! I am looking for someone to help me learn to play some instruments and am specialized in web programming. DM me if you would like to help eachother and meet up! </p>
+    <a href="#" class="message text-primary h3">Contact Lily</a>
+  </div>
+  <div class=" shadow p-3 pb-1 rounded lightblue-custom mx-auto mt-4"> 
+    <div class="row">
+      <div class="col">
+        <img src="placeholder.jpeg" alt="profile" >
+      </div>
+      <div class="col">
+        <p class="message">Lily Ross</p>
+        <p class="date">Activities: Learn: Piano, Flute </p>
+        <p class="date">Teach: Javascript, Python, HTML, CSS</p>
+      </div>
+    </div>
+    <p class="date">Hi, I am a junior in highschool! I am looking for someone to help me learn to play some instruments and am specialized in web programming. DM me if you would like to help eachother and meet up! </p>
+    <a href="#" class="message text-primary h3">Contact Lily</a>
+  </div>
+</div>
+<div class="col-3 m-4">
+  <p class="h2" style="font-family: Catamaran;font-style: normal; font-weight:500; font-size: 30px; line-height: 49px; text-align: center; color: #1D77FF;">Messages</p>
+  <div class=" shadow p-3 pb-1 rounded bg-light mx-auto mt-4"> 
+    <p class="message">Emily Smith:</p>
+    <p class="date">10:00 AM Today</p>
+  </div>
+  <div class=" shadow p-3 pb-1 rounded bg-light mx-auto mt-4"> 
+    <p class="message">John Meyer:</p>
+    <p class="date">May 4</p>
+  </div>
+</div>
+
+
+
+{% endif %}
+
+
+{% endblock %}
