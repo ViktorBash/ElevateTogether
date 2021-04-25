@@ -7,7 +7,7 @@
 {% if user == profile.user %}
 <div class="container">
     <h1 class="text-center p-3 text-primary">{{ profile.user }}'s Profile Page</h1>
-    <img class="mx-auto " src="{% static 'placeholder.jpeg' %}" alt="profile-pic" >
+    <img class="mx-auto " src="{% static 'placeholder.jpeg' %}" style="width:250px; display:block; margin-left: auto; margin-right: auto;" alt="profile-pic" >
     <div class="col mt-4">
         <div class="row ">
           <a href="{% url 'profile_update' %}" type="button" class=" col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Edit Profile</a>
