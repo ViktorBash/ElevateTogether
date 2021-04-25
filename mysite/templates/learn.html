@@ -115,7 +115,7 @@
       </div>
     </div>
     <p class="date">{{profile.description}}</p>
-    <!-- <a href="{% url 'create_chat_by_student' user_uuid=profile.link %}" class="message text-primary h3">Contact Dan</a> -->
+    <a href="{% url 'create_chat_by_student' user_uuid=profile.link %}" class="message text-primary h3">Contact {{ profile.user.username }}</a>
   </div>
   {% endfor %}
 
