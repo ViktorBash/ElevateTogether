@@ -44,10 +44,6 @@ def learn(request):
         })
 
 
-
-def landing(request):
-    return render(request, "landing.html")
-
 # Create an account (User model)
 def signup(request):
     if request.method == 'POST':

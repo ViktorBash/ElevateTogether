@@ -5,9 +5,7 @@ from mysite.core import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', views.landing, name='landing'),
-    path('', views.landing, name='home'),
-    path('learn/', views.learn, name='learn'),
+    path('', views.learn, name='learn'),
     path('signup/', views.signup, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
