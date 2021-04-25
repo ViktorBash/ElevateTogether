@@ -1,5 +1,5 @@
 """
-ASGI config for personalitymatcher project for the websockets for the chat application.
+ASGI config for the websockets that make the chat possible (in the chat app)
 """
 
 import os
