@@ -59,7 +59,6 @@ def signup(request):
 @login_required
 def profile_view(request, user_uuid):
     profile = Profile.objects.get(link=user_uuid)
-    user = profile.user
     return render(request, "profile.html", context={
         "profile": profile,
     })
