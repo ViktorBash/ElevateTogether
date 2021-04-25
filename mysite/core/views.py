@@ -10,6 +10,9 @@ from .forms import ProfileCreateForm, ProfileEditForm
 
 # Homepage with landing page, form to create a profile, and place to view everybody
 def home(request):
+    """
+    The homepage has a profile form that must be completed to see the profiles of other members
+    """
     if request.method == "POST":
         profile_form = ProfileCreateForm(request.POST, instance=request.user)
         if profile_form.is_valid():
@@ -59,7 +62,6 @@ def signup(request):
 @login_required
 def profile_view(request, user_uuid):
     profile = Profile.objects.get(link=user_uuid)
-    user = profile.user
     return render(request, "profile.html", context={
         "profile": profile,
     })
