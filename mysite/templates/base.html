@@ -72,7 +72,7 @@
 
         {% if user.is_authenticated %}
           <ul class="navbar-nav">
-            <a href="#" type="button" class=" button-custom btn shadow p-3 pl-4 pr-4 rounded align-center my-auto text-dark">{{ user.username }}</a>
+            <a href="{% url 'profile_view' user_uuid=user.profile.link %}" type="button" class=" button-custom btn shadow p-3 pl-4 pr-4 rounded align-center my-auto text-dark">{{ user.username }}</a>
           </ul>
         {% else %}
           <form class="form-inline my-2 my-lg-0">
