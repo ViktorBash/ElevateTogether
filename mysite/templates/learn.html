@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load static from static %}
 
 {% block content %}
 
@@ -60,51 +61,64 @@
   </div>
   <div class="col-5 mt-4">
     <div class="row ">
-      <a href="{% url 'signup' %}" type="button" class=" col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Learn</a>
-      <a href="{% url 'signup' %}" type="button" class="col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Teach</a>
+      <a href="{% url 'learn' %}" type="button" class=" col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Learn</a>
+      <a href="{% url 'teach' %}" type="button" class="col m-2 button-custom btn shadow p-3 pl-4 pr-4rounded align-center my-auto m2 text-dark">Teach</a>
   </div>
+  {% for profile in profiles %}
   <div class=" shadow p-3 pb-1 rounded lightblue-custom mx-auto mt-4"> 
     <div class="row">
       <div class="col">
-        <img src="placeholder.jpeg" alt="profile" >
+        <img src="{% static 'placeholder.jpeg' %}" alt="profile" >
       </div>
-      <div class="col">
-        <p class="message">Dan Lowman</p>
-        <p class="date">Learn: Programming Language, Spanish</p>
-        <p class="date">Teach: Painting, Piano, Math up to Calc</p>
+      <div class="col profile-card">
+        <p class="message">{{ profile.user.username }}</p>
+        <p class="date">Learn:
+        {% if profile.learn_math is True %} 
+        Math 
+        {% endif %}
+        {% if profile.learn_singing is True %} 
+        Singing 
+        {% endif %}
+        {% if profile.learn_music is True %} 
+        Music 
+        {% endif %}
+        {% if profile.learn_drawing is True %} 
+        Drawing 
+        {% endif %}
+        {% if profile.learn_video_editing is True %} 
+        Video Editing  
+        {% endif %}
+        {% if profile.learn_animation is True %} 
+        Animation 
+        {% endif %}
+        </p>
+        <p class="date">Teach: 
+        {% if profile.knows_math is True %} 
+        Math 
+        {% endif %}
+        {% if profile.knows_singing is True %} 
+        Singing 
+        {% endif %}
+        {% if profile.knows_music is True %} 
+        Music 
+        {% endif %}
+        {% if profile.knows_drawing is True %} 
+        Drawing 
+        {% endif %}
+        {% if profile.knows_video_editing is True %} 
+        Video Editing  
+        {% endif %}
+        {% if profile.knows_animation is True %} 
+        Animation 
+        {% endif %}
+        </p>
       </div>
     </div>
-    <p class="date">Hi, I am a junior in highschool! I am looking for someone to help me learn to play some instruments and am specialized in web programming. DM me if you would like to help eachother and meet up! </p>
-    <a href="{% url 'create_chat_by_student' %}" class="message text-primary h3">Contact Dan</a>
+    <p class="date">{{profile.description}}</p>
+    <!-- <a href="{% url 'create_chat_by_student' user_uuid=profile.link %}" class="message text-primary h3">Contact Dan</a> -->
   </div>
-  <div class=" shadow p-3 pb-1 rounded lightblue-custom mx-auto mt-4"> 
-    <div class="row">
-      <div class="col">
-        <img src="placeholder.jpeg" alt="profile" >
-      </div>
-      <div class="col">
-        <p class="message">Lily Ross</p>
-        <p class="date">Activities: Learn: Piano, Flute </p>
-        <p class="date">Teach: Javascript, Python, HTML, CSS</p>
-      </div>
-    </div>
-    <p class="date">Hi, I am a junior in highschool! I am looking for someone to help me learn to play some instruments and am specialized in web programming. DM me if you would like to help eachother and meet up! </p>
-    <a href="#" class="message text-primary h3">Contact Lily</a>
-  </div>
-  <div class=" shadow p-3 pb-1 rounded lightblue-custom mx-auto mt-4"> 
-    <div class="row">
-      <div class="col">
-        <img src="placeholder.jpeg" alt="profile" >
-      </div>
-      <div class="col">
-        <p class="message">Lily Ross</p>
-        <p class="date">Activities: Learn: Piano, Flute </p>
-        <p class="date">Teach: Javascript, Python, HTML, CSS</p>
-      </div>
-    </div>
-    <p class="date">Hi, I am a junior in highschool! I am looking for someone to help me learn to play some instruments and am specialized in web programming. DM me if you would like to help eachother and meet up! </p>
-    <a href="#" class="message text-primary h3">Contact Lily</a>
-  </div>
+  {% endfor %}
+
 </div>
 <div class="col-3 m-4">
   <p class="h2" style="font-family: Catamaran;font-style: normal; font-weight:500; font-size: 30px; line-height: 49px; text-align: center; color: #1D77FF;">Messages</p>
@@ -118,9 +132,5 @@
   </div>
 </div>
 
-
-
 {% endif %}
-
-
 {% endblock %}

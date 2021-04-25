@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static from static %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-left p-3">About Elevate Together</h1>
+    <p class="explain left-align p-3 ">Elevate Together is a program where everyone is a teacher and student. Everyone has their own strengths and weaknesses! To elevate our community, it's important to share your skills and knowledge as well as learn from others which is exactly what Elevate Together allows you to do! You can find someone who is teaching what you are intrested in learning and who wants to learn what you are specialized in. </p>
+    <br><br>
+    <h1 class="text-right p-3">Why was it created?</h1>
+    <p class="explain text-right p-3 ">For many people, it's hard to find opportunities to learn new skills. WHy? Because it costs money to learn, social distancing makes it harder to meet with people and find mentors, and many people end up feeling too overwhelmed, discouraged, and incapable when learning something new. Elevate together helps with that since it's free of cost, you can connect online, and it builds confidence.</p>
+    <br>
+    <img src="{% static 'graph.png' %}" alt="graph">
+</div>
+
+
+
+
+{% endblock %}
