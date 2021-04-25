@@ -78,56 +78,46 @@
         {% if profile.learn_singing is True %} 
         Singing 
         {% endif %}
+        {% if profile.learn_music is True %} 
+        Music 
+        {% endif %}
+        {% if profile.learn_drawing is True %} 
+        Drawing 
+        {% endif %}
+        {% if profile.learn_video_editing is True %} 
+        Video Editing  
+        {% endif %}
+        {% if profile.learn_animation is True %} 
+        Animation 
+        {% endif %}
         </p>
-        <p class="date">Teach: Painting, Piano, Math up to Calc</p>
+        <p class="date">Teach: 
+        {% if profile.knows_math is True %} 
+        Math 
+        {% endif %}
+        {% if profile.knows_singing is True %} 
+        Singing 
+        {% endif %}
+        {% if profile.knows_music is True %} 
+        Music 
+        {% endif %}
+        {% if profile.knows_drawing is True %} 
+        Drawing 
+        {% endif %}
+        {% if profile.knows_video_editing is True %} 
+        Video Editing  
+        {% endif %}
+        {% if profile.knows_animation is True %} 
+        Animation 
+        {% endif %}
+        </p>
       </div>
     </div>
-    <p class="date">Hi, I am a junior in highschool! I am looking for someone to help me learn to play some instruments and am specialized in web programming. DM me if you would like to help eachother and meet up! </p>
+    <p class="date">{{profile.description}}</p>
     <a href="{% url 'create_chat_by_student' user_uuid=profile.link %}" class="message text-primary h3">Contact Dan</a>
   </div>
   {% endfor %}
-  <div class=" shadow p-3 pb-1 rounded lightblue-custom mx-auto mt-4"> 
-    <div class="row">
-      <div class="col">
-        <img src="placeholder.jpeg" alt="profile" >
-      </div>
-      <div class="col">
-        <p class="message">Dan Lowman</p>
-        <p class="date">Learn: Programming Language, Spanish</p>
-        <p class="date">Teach: Painting, Piano, Math up to Calc</p>
-      </div>
-    </div>
-    <p class="date">Hi, I am a junior in highschool! I am looking for someone to help me learn to play some instruments and am specialized in web programming. DM me if you would like to help eachother and meet up! </p>
-    {% comment %} <a href="{% url 'create_chat_by_student'  %}" class="message text-primary h3">Contact Dan</a> {% endcomment %}
-  </div>
-  <div class=" shadow p-3 pb-1 rounded lightblue-custom mx-auto mt-4"> 
-    <div class="row">
-      <div class="col">
-        <img src="placeholder.jpeg" alt="profile" >
-      </div>
-      <div class="col">
-        <p class="message">Lily Ross</p>
-        <p class="date">Activities: Learn: Piano, Flute </p>
-        <p class="date">Teach: Javascript, Python, HTML, CSS</p>
-      </div>
-    </div>
-    <p class="date">Hi, I am a junior in highschool! I am looking for someone to help me learn to play some instruments and am specialized in web programming. DM me if you would like to help eachother and meet up! </p>
-    <a href="#" class="message text-primary h3">Contact Lily</a>
-  </div>
-  <div class=" shadow p-3 pb-1 rounded lightblue-custom mx-auto mt-4"> 
-    <div class="row">
-      <div class="col">
-        <img src="placeholder.jpeg" alt="profile" >
-      </div>
-      <div class="col">
-        <p class="message">Lily Ross</p>
-        <p class="date">Activities: Learn: Piano, Flute </p>
-        <p class="date">Teach: Javascript, Python, HTML, CSS</p>
-      </div>
-    </div>
-    <p class="date">Hi, I am a junior in highschool! I am looking for someone to help me learn to play some instruments and am specialized in web programming. DM me if you would like to help eachother and meet up! </p>
-    <a href="#" class="message text-primary h3">Contact Lily</a>
-  </div>
+
 </div>
 <div class="col-3 m-4">
   <p class="h2" style="font-family: Catamaran;font-style: normal; font-weight:500; font-size: 30px; line-height: 49px; text-align: center; color: #1D77FF;">Messages</p>
